@@ -121,7 +121,7 @@
       
       <div class="terminal-container">
         <div class="terminal-header">
-          <span class="terminal-title">Alina_Multitool_v2.exe</span>
+          <span class="terminal-title">Alinas Konsole</span>
           <span style="font-size: 8px; opacity: 0.5;">Status: Interactive Mode</span>
         </div>
         <div class="terminal-tabs">
@@ -147,7 +147,7 @@
   </main>
 
 <script>
-  // 1. Плавное появление контента
+
   const observerOptions = { threshold: 0.1 };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -187,7 +187,7 @@ const data = {
       lines: [
         { label: "Education:", val: "FH St. Pölten: Medientechnik (Interaktive Medien)" },
         { label: "Code:", val: "HTML5, CSS3, JS, React, Astro, PHP, MySQL" },
-        { label: "UI/UX:", val: "User Flows, Prototyping, User testing" },
+        { label: "UI/UX:", val: "User Flow, Prototyping, User testing, WordPress" },
         { label: "Showcase:", val: '<a href="https://www.behance.net/gallery/245600691/Namaste-Yoga-(AstroReactRESTful-API)" target="_blank" style="color:inherit; text-decoration:underline;">Namaste Yoga (Astro/React/RESTful API)</a>' },
         { label: "Mindset:", val: "KI-Agenten sind effizient, aber ich glaube fest daran, dass man die Grundlagen der Programmierung verstehen muss, um KI präzise und sinnvoll zu steuern." }
       ]
@@ -199,7 +199,7 @@ const data = {
   let typingIntervals = [];
   let currentShadowColor = 'rgba(0, 0, 0, 0.2)';
 
-  // Эффект тени при скролле
+  
   window.addEventListener('scroll', () => {
     const terminal = document.querySelector('.terminal-container');
     if(terminal) {
@@ -210,21 +210,20 @@ const data = {
   });
 
   function switchTab(evt, tabName) {
-    // Чистим старую печать
+  
     typingIntervals.forEach(clearInterval);
     typingIntervals = [];
     isTyping = false;
     
-    // Сбрасываем кнопки
+  
     const tabs = document.querySelectorAll(".tab-link");
     tabs.forEach(t => { t.classList.remove("active"); t.style.color = ""; });
     
-    // Активируем кнопку
     const activeTab = evt ? evt.currentTarget : document.querySelector('.tab-link');
     activeTab.classList.add("active");
     activeTab.style.color = data[tabName].accent;
 
-    // Цвет тени
+  
     currentShadowColor = data[tabName].shadow;
     const terminal = document.querySelector('.terminal-container');
     if(terminal) terminal.style.boxShadow = `0 10px 30px ${currentShadowColor}`;
@@ -251,13 +250,13 @@ const data = {
 
         const text = line.val;
         
-        // ПРОВЕРКА: Если в тексте есть ссылка (HTML-тег), выводим сразу без анимации букв
+       
         if (text.includes("<a")) {
           p.innerHTML += text;
           lineIndex++;
           setTimeout(typeLine, 100);
         } else {
-          // Обычная анимация букв
+        
           let charIndex = 0;
           const interval = setInterval(() => {
             if (charIndex < text.length) {
@@ -278,9 +277,9 @@ const data = {
     typeLine();
   }
 
-  // ГАРАНТИРОВАННЫЙ ЗАПУСК
+
   window.addEventListener('DOMContentLoaded', () => {
-    // Небольшая задержка, чтобы браузер точно отрисовал контейнер
+    
     setTimeout(() => {
       switchTab(null, 'grafik');
     }, 100);
